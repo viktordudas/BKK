@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var azure = require('azure');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -59,3 +60,32 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+
+// "Endpoint=sb://bkksbn.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=mMvTQ0E8ZC879TMt1iZ9mTDQsC+/r9gYYHWHZ+VRuTU="
+// Endpoint=sb://bkksbn.servicebus.windows.net/;SharedAccessKeyName=test;SharedAccessKey=vO/2VEE5quSd8i87FPnNPHcS9YPA5yP7+dFZQQWtLNQ=
+
+//Endpoint=sb://bkksbn.servicebus.windows.net/;SharedAccessKeyName=test;SharedAccessKey=Cd9FY4s1qbEubX8goHMUjgrNca7JcrcJ2fhWw2hvK3k=
+//var uri = 'amqps://' + encodeURIComponent('test') + ':' + encodeURIComponent('mMvTQ0E8ZC879TMt1iZ9mTDQsC+/r9gYYHWHZ+VRuTU=') + '@' + 'bkksbn.servicebus.windows.net';
+
+
+
+/*
+var eventsClient = azure.createEventsClient("Endpoint=sb://bkksbn.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=mMvTQ0E8ZC879TMt1iZ9mTDQsC+/r9gYYHWHZ+VRuTU=");
+// var eventsCLient = azure.createEventsClient("Endpoint=sb://bkksbn.servicebus.windows.net/;SharedAccessKeyName=test;SharedAccessKey=FVPCEdgc0F6K0ZuSZNFA7t5SSyg8KVXCVz1t4uoqozU=");
+//var serviceBusService = azure.createServiceBusService("Endpoint=sb://bkksbn.servicebus.windows.net/;SharedAccessKeyName=test;SharedAccessKey=aNl/2FjgxGcixKghGww8C2jI/CLl3STfHiUBG7bPF2s=");
+
+
+var message = {
+  Vonal: 'M3'
+  };
+eventsClient.sendQueueMessage('bkkqueue', message, function(error){
+  if(!error){
+    // message sent
+      console.log("Siker");
+  } else {
+      console.log("Fail " + error);
+  }
+});
+
+*/
