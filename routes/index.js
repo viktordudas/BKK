@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var AMQPClient  = require('amqp10');
 
+var AMQPClient  = require('amqp10');
 
 var sendCB = function(tx_err, state) {
   if (tx_err) {
@@ -17,7 +17,7 @@ var sendCB = function(tx_err, state) {
 router.get('/', function(req, res, next) {
   console.log(req.query.Vonal);
 
-  if (req.query.Vonal != "") {
+  if (req.query.Vonal != "" && req.query.Vonal != undefined) {
 // var uri = 'amqps://' + encodeURIComponent(sasName) + ':' + encodeURIComponent(sasKey) + '@' + serviceBusHost;
     var uri = 'amqps://' + encodeURIComponent('RootManageSharedAccessKey') + ':' + encodeURIComponent('mMvTQ0E8ZC879TMt1iZ9mTDQsC+/r9gYYHWHZ+VRuTU=') + '@' + 'bkksbn.servicebus.windows.net';
 
